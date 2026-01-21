@@ -37,24 +37,21 @@ app.use(function(req, res, next) {
 
 const portNum = process.env.PORT || 3000;
 
-// Only start server if this file is run directly.
-// Prevents EADDRINUSE when tests import the app.
 if (require.main === module) {
   app.listen(portNum, () => {
     console.log(`Listening on port ${portNum}`);
     if (process.env.NODE_ENV === 'test') {
       console.log('Running Tests...');
-      setTimeout(function () {
+      setTimeout(() => {
         try {
           runner.run();
-        } catch (error) {
-          console.log('Tests are not valid:');
-          console.error(error);
+        } catch (e) {
+          console.error(e);
         }
       }, 1500);
     }
   });
 }
 
-module.exports = app; // For testing
+module.exports = app;
 
