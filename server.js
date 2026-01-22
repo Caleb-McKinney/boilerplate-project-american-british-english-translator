@@ -45,8 +45,8 @@ if (require.main === module) {
       setTimeout(() => {
         try {
           runner.run();
-        } catch (e) {
-          console.error(e);
+        } catch (error) {
+          console.error(error);
         }
       }, 1500);
     }
